@@ -6,7 +6,11 @@ Prototype of Text Game Engine on Java
 Сделан по приколу и без серьёзной цели, просто балавство и обучение.
 Мой опыт в программирование ничтожно мал, сделал как сделал, ещё и использовал ИИ для некоторой помощи.
 
+Можете предложить улучшения, советы или вообще полностью поменять код.
+
 ### English
 A prototype text-based game engine in Java.
 Made for fun and without any serious purpose, just for fun and learning.
 My programming experience is negligible, so I did what I did, and even used AI for some assistance.
+
+You can suggest improvements, tips, or even completely change the code.
