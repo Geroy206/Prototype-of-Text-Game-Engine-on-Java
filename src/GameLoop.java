@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class GameLoop {
     private boolean isRunning = true;
-    GameState gameState = GameState.EXPLORING;
+    private GameState gameState = GameState.EXPLORING;
     GameInput INPUT = new GameInput();
     GameManager gameManager = new GameManager();
     private final Map<String, Command> commands = new HashMap<>();
@@ -15,6 +15,10 @@ public class GameLoop {
         commands.put("take", new TakeCommand());
         commands.put("inv", new InventoryCommand());
     }
+
+    public GameState getGameState() { return gameState; }
+
+    public void setGameState(GameState newState) { gameState = newState; }
 
    public void loop(Player player, World world) {
 

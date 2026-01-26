@@ -4,6 +4,7 @@ import java.util.Map;
 
 public class GameManager {
 
+    // работа с локацией
     public Map<Integer, Location> createPlayerChoices(Location currentLocation) {
         List<Location> availablePaths = currentLocation.getPaths();
 
@@ -18,27 +19,6 @@ public class GameManager {
         }
 
         return choicesMap;
-    }
-
-    public Map<Integer, Item> createItemChoices(Player player) {
-        List<Item> items = player.getInventory().getContents();
-        Map<Integer, Item> itemMap = new HashMap<>();
-
-        System.out.println("======== ВАШ ИНВЕНТАРЬ ========");
-        if (items.isEmpty()) {
-            System.out.println("Ваш рюкзак пуст.");
-            System.out.println("0. Назад");
-            return itemMap;
-        }
-
-        for (int i = 0; i < items.size(); i++) {
-            int choice = i + 1;
-            Item item = items.get(i);
-            itemMap.put(choice, item);
-            System.out.println(choice + ". " + item.getName() + " — " + item.getDescription());
-        }
-        System.out.println("0. Назад");
-        return itemMap;
     }
 
     public void printMap(Map<Integer, Location> choices) {
@@ -71,5 +51,27 @@ public class GameManager {
                 System.out.println("Путь закрыт!");
             }
         }
+    }
+
+    // Работа с инвентарём
+    public Map<Integer, Item> createItemChoices(Player player) {
+        List<Item> items = player.getInventory().getContents();
+        Map<Integer, Item> itemMap = new HashMap<>();
+
+        System.out.println("======== ВАШ ИНВЕНТАРЬ ========");
+        if (items.isEmpty()) {
+            System.out.println("Ваш рюкзак пуст.");
+            System.out.println("0. Назад");
+            return itemMap;
+        }
+
+        for (int i = 0; i < items.size(); i++) {
+            int choice = i + 1;
+            Item item = items.get(i);
+            itemMap.put(choice, item);
+            System.out.println(choice + ". " + item.getName() + " — " + item.getDescription());
+        }
+        System.out.println("0. Назад");
+        return itemMap;
     }
 }
