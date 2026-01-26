@@ -10,7 +10,9 @@ public class Weapon extends Item {
     public float giveDamage() { return damage; }
 
     @Override
-    public void use() {
-        System.out.println("Потом придумаю.");
+    public void use(Player player) {
+        System.out.println("Вы совершаете суицид!");
+
+        player.takeDamage(500);
     }
 }

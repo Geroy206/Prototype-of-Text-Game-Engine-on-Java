@@ -1,3 +1,3 @@
 public interface Command {
-    boolean execute(Player player);
+    boolean execute(Player player,GameLoop loop);
 }

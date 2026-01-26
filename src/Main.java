@@ -11,7 +11,7 @@ public class Main {
         Location crossroad2 = new Location("Перекрёсток 3", 202, LocationStatus.OPEN, "Перекрёсток номер 3", null );
 
         Item debugItem = new Item("Пиздец", 300, "DEBUG");
-        Item debugItem1 = new Item("Пиздец", 301, "DEBUG");
+        Weapon debugItem1 = new Weapon("Пиздец", 301, "DEBUG", 20);
 
         crossroad0.addPath(crossroad1);
         crossroad0.addPath(crossroad2);

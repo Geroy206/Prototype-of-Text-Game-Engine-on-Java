@@ -13,28 +13,24 @@ public class GameLoop {
     public GameLoop() {
         commands.put("exit", new ExitCommand());
         commands.put("take", new TakeCommand());
+        commands.put("inv", new InventoryCommand());
     }
 
    public void loop(Player player, World world) {
 
        while (isRunning) {
-           Location playerLocation = player.getCurrentLocation();
-           System.out.println(player.getLocName());
-           System.out.println("Описание локации: " + player.getLocDescription());
-           Map<Integer, Location> currentChoices = gameManager.handler(playerLocation);
-
-           if (player.getHp() <= 0) {
-                isRunning = false;
-           }
-
-           String prompt = INPUT.getInput();
-
-
            if (gameState == GameState.EXPLORING) {
+               Location playerLocation = player.getCurrentLocation();
+               System.out.println(player.getLocName());
+               System.out.println("Описание локации: " + player.getLocDescription());
+               Map<Integer, Location> currentChoices = gameManager.handler(playerLocation);
+
+               String prompt = INPUT.getInput();
+
                Command cmd = commands.get(prompt);
 
                if (cmd != null) {
-                   this.isRunning = cmd.execute(player);
+                   this.isRunning = cmd.execute(player, this);
                } else {
                    try {
                        int choice = Integer.parseInt(prompt);
@@ -44,7 +40,29 @@ public class GameLoop {
                    }
                }
            }
+           else if (gameState == GameState.IN_INVENTORY) {
+               Map<Integer, Item> itemChoices = gameManager.createItemChoices(player);
 
+               String prompt = INPUT.getInput();
+               try {
+                   int choice = Integer.parseInt(prompt);
+
+                   if (choice == 0) {
+                       gameState = GameState.EXPLORING;
+                   } else if (itemChoices.containsKey(choice)) {
+                       Item selected = itemChoices.get(choice);
+                       selected.use(player);
+                   } else {
+                       System.out.println("Нет такого предмета.");
+                   }
+               } catch (NumberFormatException e) {
+                   System.out.println("Введите номер предмета или 0 для выхода.");
+               }
+           }
+
+           if (player.getHp() <= 0) {
+               isRunning = false;
+           }
        }
 
        INPUT.closeScanner();

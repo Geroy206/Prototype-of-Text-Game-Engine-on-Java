@@ -2,7 +2,7 @@ import java.util.List;
 
 public class TakeCommand implements Command {
     @Override
-    public boolean execute(Player player) {
+    public boolean execute(Player player, GameLoop loop) {
         Location loc = player.getCurrentLocation();
         Inventory inv = loc.getInventory();
         List<Item> items = inv.getContents();
