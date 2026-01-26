@@ -23,6 +23,8 @@ public class GameLoop {
 
            String prompt = INPUT.getInput();
 
+           System.out.println(prompt);
+
            if (gameState != GameState.IN_INVENTORY) {
                if (SystemCommand.isCommand(prompt)) {
                    isRunning = SystemCommand.execute(prompt);

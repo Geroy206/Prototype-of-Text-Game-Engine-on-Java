@@ -14,7 +14,7 @@ import java.util.Objects;
 // а по пунктам выбирается направление куда идти.
 // То есть если в локации есть что взять, то при написании Взять, предмет возьмётся и положиться в инвентарь
 public class SystemCommand {
-    private static final List<String> commandList = Arrays.asList("выход");
+    private static final List<String> commandList = Arrays.asList( "exit");
 
     private static boolean gameExit() {
         return false;
@@ -22,7 +22,7 @@ public class SystemCommand {
 
     public static boolean execute(String prompt) {
 
-        if (Objects.equals(prompt, "выход")) {
+        if (prompt.equalsIgnoreCase("exit")) {
             return gameExit();
         } else {
             return true;
