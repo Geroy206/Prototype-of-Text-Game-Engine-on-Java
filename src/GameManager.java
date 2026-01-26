@@ -39,10 +39,16 @@ public class GameManager {
     }
 
     public void choicesHandler(int prompt, Player player, Map<Integer, Location> choices) {
-        Location nextLocation = player.getCurrentLocation().handleSelection(prompt, choices);
+        Location currentLocation = player.getCurrentLocation();
+        Location nextLocation = currentLocation.handleSelection(prompt, choices);
 
         if (nextLocation != null) {
-            player.moveTo(nextLocation);
+            if (nextLocation.getStatus() != LocationStatus.LOCKED) {
+                currentLocation.setStatus(LocationStatus.EXPLORED);
+                player.moveTo(nextLocation);
+            } else {
+                System.out.println("Путь закрыт!");
+            }
         }
     }
 }
