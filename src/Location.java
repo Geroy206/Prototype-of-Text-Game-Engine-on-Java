@@ -6,15 +6,15 @@ public class Location {
     private LocationStatus status;
     private String description;
     private final List<Location> paths;
-    private final List<Item> items;
+    private final Inventory inventory;
 
-    public Location (String name, int ID, LocationStatus status, String description, List<Location> Paths, List<Item> Items) {
+    public Location (String name, int ID, LocationStatus status, String description, List<Location> Paths) {
         this.name = name;
         this.ID = ID;
         this.status = status;
         this.description = description;
         this.paths = Objects.requireNonNullElseGet(Paths, ArrayList::new);
-        this.items = Objects.requireNonNullElseGet(Items, ArrayList::new);
+        this.inventory = new Inventory(null);
     }
 
     public String getName() { return name; }
@@ -28,12 +28,15 @@ public class Location {
             result.append(" [ИССЛЕДОВАНО]");
         }
 
-        if (items != null && !items.isEmpty()) {
-            result.append("\nПредметы в этой локации: ");
-            for (int i = 0; i < items.size(); i++) {
-                result.append(items.get(i).getName());
+        // Получаем список предметов из инвентаря локации
+        List<Item> locItems = inventory.getContents();
 
-                if (i < items.size() - 1) {
+        if (!locItems.isEmpty()) {
+            result.append("\nПредметы в этой локации: ");
+            for (int i = 0; i < locItems.size(); i++) {
+                result.append(locItems.get(i).getName());
+
+                if (i < locItems.size() - 1) {
                     result.append(", ");
                 }
             }
@@ -53,13 +56,7 @@ public class Location {
         }
     }
 
-    public void addItem(Item item) {
-        items.add(item);
-    }
-
-    public void removePath(Location oldDestination) {
-        paths.remove(oldDestination);
-    }
+    public Inventory getInventory() { return inventory; }
 
     public void setStatus(LocationStatus newStatus) {
         this.status = newStatus;

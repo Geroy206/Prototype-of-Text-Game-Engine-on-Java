@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class Player {
     private final String name;
@@ -11,6 +13,7 @@ public class Player {
         this.ID = ID;
         this.currentLocation = currentLocation;
         this.hp = hp;
+        this.inventory = new Inventory(null);
     }
 
     public String getName() { return name; }
@@ -22,6 +25,8 @@ public class Player {
     public void takeDamage(float take) {
         this.hp -= take;
     }
+
+    public Inventory getInventory() { return inventory; }
 
     public Location getCurrentLocation() {
         return currentLocation;
