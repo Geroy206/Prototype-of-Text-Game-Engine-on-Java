@@ -8,7 +8,7 @@ public class Location {
     private final List<String> view;
     private final List<Location> paths;
     private final Inventory inventory;
-
+    private Integer requiredKeyId;
 
     public Location (String name, int ID, LocationStatus status, String description, List<String> view, List<Location> Paths) {
         this.name = name;
@@ -31,7 +31,6 @@ public class Location {
             result.append(" [ИССЛЕДОВАНО]");
         }
 
-        // Получаем список предметов из инвентаря локации
         List<Item> locItems = inventory.getContents();
 
         if (!locItems.isEmpty()) {
@@ -60,6 +59,21 @@ public class Location {
     }
 
     public Inventory getInventory() { return inventory; }
+
+    public void setRequiredKeyId(Integer keyId) {
+        this.requiredKeyId = keyId;
+    }
+
+    public Integer getRequiredKeyId() {
+        return requiredKeyId;
+    }
+
+    public boolean canPlayerEnter(Player player) {
+        if (this.status != LocationStatus.LOCKED) return true;
+        if (this.requiredKeyId == null) return true;
+
+        return player.getInventory().hasItem(this.requiredKeyId);
+    }
 
     public void setStatus(LocationStatus newStatus) {
         this.status = newStatus;

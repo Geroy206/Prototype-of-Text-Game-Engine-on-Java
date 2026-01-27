@@ -4,7 +4,7 @@ public class Weapon extends Item {
     private final float damage;
 
     public Weapon(String name, int id, String description, float damage) {
-        super(name, id, description);
+        super(name, id, description, false);
         this.damage = damage;
     }
 

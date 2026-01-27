@@ -23,7 +23,7 @@ public class GameManager {
     }
 
     public void printMap(Map<Integer, Location> choices) {
-        System.out.println("Выборы для игрока:");
+        System.out.println("-------------------");
 
         for (Map.Entry<Integer, Location> entry : choices.entrySet()) {
             int choiceNumber = entry.getKey();
@@ -45,21 +45,43 @@ public class GameManager {
         Location nextLocation = currentLocation.handleSelection(prompt, choices);
 
         if (nextLocation != null) {
-            if (nextLocation.getStatus() != LocationStatus.LOCKED) {
+            if (nextLocation.canPlayerEnter(player)) {
+
+                if (nextLocation.getStatus() == LocationStatus.LOCKED) {
+                    int keyId = nextLocation.getRequiredKeyId();
+                    Item keyItem = player.getInventory().getItemById(keyId);
+
+                    if (keyItem.isConsumable()) {
+                        player.getInventory().removeItem(keyItem);
+                        System.out.println("Вы использовали " + keyItem.getName() + " и открыли проход!");
+                        System.out.println("(Предмет '" + keyItem.getName() + "' был израсходован)");
+                    } else {
+                        System.out.println("Вы использовали " + keyItem.getName() + " и открыли проход!");
+                        System.out.println("(Предмет '" + keyItem.getName() + "' остался у вас)");
+                    }
+
+                    nextLocation.setStatus(LocationStatus.OPEN);
+                }
+
                 currentLocation.setStatus(LocationStatus.EXPLORED);
                 player.moveTo(nextLocation);
+                System.out.println("Вы перешли в: " + nextLocation.getName() + "\n");
+
             } else {
-                System.out.println("Путь закрыт!");
+                System.out.println("Путь закрыт! Кажется, вам нужен какой-то особый предмет...\n");
             }
+        } else {
+            System.out.println("Туда нельзя пройти.\n");
         }
     }
+
 
     // Работа с инвентарём
     public Map<Integer, Item> createItemChoices(Player player) {
         List<Item> items = player.getInventory().getContents();
         Map<Integer, Item> itemMap = new HashMap<>();
 
-        System.out.println("======== ВАШ ИНВЕНТАРЬ ========");
+        System.out.println("======== ИНВЕНТАРЬ ========");
         if (items.isEmpty()) {
             System.out.println("Ваш рюкзак пуст.");
             System.out.println("0. Назад");

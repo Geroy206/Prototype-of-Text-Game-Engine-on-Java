@@ -19,4 +19,20 @@ public class Inventory {
     public void removeItem(Item toRemove) {
         contents.remove(toRemove);
     }
+
+    public Item getItemById(int itemId) {
+        for (Item item : contents) {
+            if (item.getId() == itemId) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public boolean hasItem(int itemId) {
+        for (Item item : contents) {
+            if (item.getId() == itemId) return true;
+        }
+        return false;
+    }
 }

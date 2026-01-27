@@ -32,16 +32,19 @@ public class GameLoop {
        while (isRunning) {
            if (gameState == GameState.EXPLORING) {
                Location playerLocation = player.getCurrentLocation();
-               System.out.println(player.getLocName());
+               System.out.println("======== " + player.getLocName() + " ========");
                System.out.println("Описание локации: " + player.getLocDescription());
                Map<Integer, Location> currentChoices = gameManager.handler(playerLocation);
 
                String prompt = INPUT.getInput();
+               String[] parts = prompt.split(" ", 2);
+               String commandName = parts[0];
+               String argument = (parts.length > 1) ? parts[1] : "";
 
-               Command cmd = commands.get(prompt);
+               Command cmd = commands.get(commandName);
 
                if (cmd != null) {
-                   this.isRunning = cmd.execute(player, this);
+                   this.isRunning = cmd.execute(player, this, argument);
                } else {
                    try {
                        int choice = Integer.parseInt(prompt);
@@ -74,7 +77,6 @@ public class GameLoop {
                Map<Integer, String> ItemActionChoices = gameManager.createItemActionChoices(itemSelected);
 
                String prompt = INPUT.getInput();
-
                try {
                    int choice = Integer.parseInt(prompt);
 
@@ -91,6 +93,9 @@ public class GameLoop {
                } catch (NumberFormatException e) {
                    System.out.println("Введите номер предмета или 0 для выхода.");
                }
+           }
+           else if (gameState == GameState.IN_COMBAT) {
+               System.out.println("Временно не реализовано.");
            }
 
            if (player.getHp() <= 0) {
