@@ -82,10 +82,8 @@ public class GameLoop {
 
                    if (choice == 0) {
                         gameState = GameState.IN_INVENTORY;
-
                    } else if (ItemActionChoices.containsKey(choice)) {
                        ItemInteract interact = itemInteract.get(ItemActionChoices.get(choice));
-
                        interact.execute(player, itemSelected, this);
                    } else {
                        System.out.println("Нет такого действия");
@@ -98,7 +96,7 @@ public class GameLoop {
                System.out.println("Временно не реализовано.");
            }
 
-           if (player.getHp() <= 0) {
+           if (player.isAlive()) {
                isRunning = false;
            }
        }

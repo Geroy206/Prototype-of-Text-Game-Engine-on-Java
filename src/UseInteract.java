@@ -8,5 +8,6 @@ public class UseInteract implements ItemInteract {
     @Override
     public void execute(Player player, Item item, GameLoop loop) {
         item.use(player);
+        loop.setGameState(GameState.IN_INVENTORY);
     }
 }

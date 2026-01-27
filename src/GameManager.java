@@ -51,7 +51,7 @@ public class GameManager {
                     int keyId = nextLocation.getRequiredKeyId();
                     Item keyItem = player.getInventory().getItemById(keyId);
 
-                    if (keyItem.isConsumable()) {
+                    if (keyItem != null && keyItem.isConsumable()) {
                         player.getInventory().removeItem(keyItem);
                         System.out.println("Вы использовали " + keyItem.getName() + " и открыли проход!");
                         System.out.println("(Предмет '" + keyItem.getName() + "' был израсходован)");

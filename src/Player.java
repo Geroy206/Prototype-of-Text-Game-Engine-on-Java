@@ -1,32 +1,12 @@
-import java.util.ArrayList;
-import java.util.Objects;
 
-public class Player {
-    private final String name;
-    private final int ID;
-    private float hp;
+public class Player extends Entity {
     private Location currentLocation;
-    private final Inventory inventory;
+    private Weapon equippedWeapon;
 
-    public Player (String name, int ID, float hp, Location currentLocation) {
-        this.name = name;
-        this.ID = ID;
+    public Player(String name, int id, float hp, Location currentLocation) {
+        super(name, id, hp);
         this.currentLocation = currentLocation;
-        this.hp = hp;
-        this.inventory = new Inventory(null);
     }
-
-    public String getName() { return name; }
-
-    public int getID() { return ID; }
-
-    public float getHp() { return hp; }
-
-    public void takeDamage(float take) {
-        this.hp -= take;
-    }
-
-    public Inventory getInventory() { return inventory; }
 
     public Location getCurrentLocation() {
         return currentLocation;
@@ -40,4 +20,9 @@ public class Player {
 
     public String getLocDescription() { return this.currentLocation.getDescription(); }
 
+    public Weapon getEquippedWeapon() { return equippedWeapon; }
+
+    public void changeEquippedWeapon(Weapon newWeapon) {
+        this.equippedWeapon = newWeapon;
+    }
 }
