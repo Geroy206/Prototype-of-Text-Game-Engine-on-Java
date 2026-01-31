@@ -1,7 +1,6 @@
 # Prototype-of-Text-Game-Engine-on-Java
 
-### English
-# 🎮 Java Text-Quest Engine (Prototype)
+# English
 
 A lightweight and extensible console-based engine for building text adventure games (RPGs) in Java. This project was developed as a deep dive into software architecture, design patterns, and data-driven game development.
 
@@ -37,7 +36,7 @@ This project was created for educational purposes. I am actively exploring game 
 
 Feel free to suggest improvements or contribute to the code!
 
-### Русский
+# Русский
 Кроссплатформенный консольный движок для создания текстовых приключенческих игр (RPG) на Java. Проект разработан в процессе изучения архитектуры ПО и паттернов проектирования.
 
 ---
