@@ -43,9 +43,9 @@ Feel free to suggest improvements or contribute to the code!
 The project is under active development. The following features and modules are planned:
 
 ### 🟢 Short-term Goals (Immediate focus)
+- [ ] **Main Menu & Game Over**: Implementation of a starting menu and finalizing the `GAME_OVER` state logic.
 - [ ] **NPC & Dialogue System**: Implement the `DIALOG` state and support for branching dialogue trees loaded from JSON.
 - [ ] **Event Parameterization**: Add the ability to pass arguments to event classes directly from the world configuration (e.g., set specific damage values for a generic `TrapEvent`).
-- [ ] **Combat Enhancements**: Implement critical hits, misses, and enemy-specific special abilities.
 
 ### 🟡 Medium-term Goals (Engine expansion)
 - [ ] **Buff/Debuff System**: Add items and events that apply temporary effects (e.g., poisoning, strength boosts, or speed).
@@ -95,9 +95,9 @@ The project is under active development. The following features and modules are 
 Проект активно развивается. В планах реализовать следующие модули:
 
 ### 🟢 Короткий срок (Ближайшие цели)
+- [ ] **Главное меню и Game Over**: Реализация главного меню и доработка состояния `GAME_OVER`.
 - [ ] **Система NPC и Диалогов**: Реализация состояния `DIALOG` и загрузка деревьев ответов из JSON.
 - [ ] **Параметризация ивентов**: Возможность передавать аргументы в классы ивентов прямо из конфигурации мира (например, разный урон для разных ловушек через один класс).
-- [ ] **Улучшенная боёвка**: Добавление критических ударов, промахов и возможности использования способностей врагами.
 
 ### 🟡 Средний срок (Усложнение движка)
 - [ ] **Система эффектов (Buffs/Debuffs)**: Предметы и события, которые накладывают временные эффекты (отравление, усиление урона).
