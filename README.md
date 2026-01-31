@@ -46,9 +46,9 @@ The project is under active development. The following features and modules are 
 - [ ] **Main Menu & Game Over**: Implementation of a starting menu and finalizing the `GAME_OVER` state logic.
 - [ ] **NPC & Dialogue System**: Implement the `DIALOG` state and support for branching dialogue trees loaded from JSON.
 - [ ] **Event Parameterization**: Add the ability to pass arguments to event classes directly from the world configuration (e.g., set specific damage values for a generic `TrapEvent`).
-- [ ] **Data Storage Refactoring**: Splitting World.json into separate files `items.json` `enemies.json` `locations.json` and updating `WorldBuilder` to handle multiple data sources.
 
 ### 🟡 Medium-term Goals (Engine expansion)
+- [ ] **Data Storage Refactoring**: Splitting `World.json` into separate files `items.json` `enemies.json` `locations.json` and updating `WorldBuilder` to handle multiple data sources.
 - [ ] **Buff/Debuff System**: Add items and events that apply temporary effects (e.g., poisoning, strength boosts, or speed).
 - [ ] **Save/Load System**: Implement serialization for `Player` and `World` states to allow persistent game sessions.
 - [ ] **Global Flags & Variables**: A system to track world states (e.g., an NPC only speaks to you if a specific global flag is triggered).
@@ -99,9 +99,9 @@ The project is under active development. The following features and modules are 
 - [ ] **Главное меню и Game Over**: Реализация главного меню и доработка состояния `GAME_OVER`.
 - [ ] **Система NPC и Диалогов**: Реализация состояния `DIALOG` и загрузка деревьев ответов из JSON.
 - [ ] **Параметризация ивентов**: Возможность передавать аргументы в классы ивентов прямо из конфигурации мира (например, разный урон для разных ловушек через один класс).
-- [ ] **Рефакторинг хранения данных**: Разделение World.json на отдельные файлы `items.json`, `enemies.json`, `locations.json` и адаптация `WorldBuilder` для работы с несколькими источниками данных.
 
 ### 🟡 Средний срок (Усложнение движка)
+- [ ] **Рефакторинг хранения данных**: Разделение `World.json` на отдельные файлы `items.json`, `enemies.json`, `locations.json` и адаптация `WorldBuilder` для работы с несколькими источниками данных.
 - [ ] **Система эффектов (Buffs/Debuffs)**: Предметы и события, которые накладывают временные эффекты (отравление, усиление урона).
 - [ ] **Система сохранений**: Сериализация состояния `Player` и `World` в файл, чтобы можно было продолжить игру с того же места.
 - [ ] **Глобальные флаги**: Система условий (например, NPC не заговорит, пока не выполнен ивент в другой локации).
